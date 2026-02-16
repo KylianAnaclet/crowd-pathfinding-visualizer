@@ -62,3 +62,11 @@ The simulation logic relies on a custom Agent class ('Personnage'). The movement
 2. Run the application: python main.py
 3. Select a map from the list (or create a new one via the Editor)
 4. Click "Lancer Simulation"
+
+
+## Authors & Contributors
+
+This project was built by a team of two:
+
+* **[Kylian]** - [KylianAnaclet](https://github.com/KylianAnaclet)
+* **[Elorien]** - [bordaelorien](https://github.com/bordaelorien)
