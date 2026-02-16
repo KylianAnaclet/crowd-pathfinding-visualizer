@@ -1,6 +1,8 @@
 # CROWD PATHFINDING VISUALIZER
 A Python-based interactive simulation tool that models crowd movement and trajectory optimization in a constrained environment.
 
+![Demo Simulation](https://github.com/KylianAnaclet/crowd-pathfinding-visualizer/blob/main/demo.gif?raw=true)
+
 ## NOTE
 This project was originally developed as part of a coursework in France. Source code variables and GUI elements are in French, but this documentation has been translated for accessibility.
 
