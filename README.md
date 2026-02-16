@@ -70,5 +70,5 @@ The simulation logic relies on a custom Agent class ('Personnage'). The movement
 
 This project was built by a team of two:
 
-* **[Kylian]** - [KylianAnaclet](https://github.com/KylianAnaclet)
-* **[Elorien]** - [bordaelorien](https://github.com/bordaelorien)
+* **Kylian** - [KylianAnaclet](https://github.com/KylianAnaclet)
+* **Elorien** - [bordaelorien](https://github.com/bordaelorien)
