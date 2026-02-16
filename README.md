@@ -51,7 +51,7 @@ The simulation logic relies on a custom Agent class ('Personnage'). The movement
 
 ## PROJECT STRUCTURE
 
-- data/ : Stores map files (.txt or .json)
+- data/ : Stores map files 
 - main.py : Application entry point (Menu & Dashboard)
 - dessinercarte.py : Map Editor (Drawing tool)
 - simulation.py : Core Simulation Logic
