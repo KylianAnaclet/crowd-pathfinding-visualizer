@@ -1,47 +1,64 @@
-Le programme est découpé en trois fichiers:
+# CROWD PATHFINDING VISUALIZER
+A Python-based interactive simulation tool that models crowd movement and trajectory optimization in a constrained environment.
 
-1 - main.py
-C'est ici que se trouve le menu principal. A gauche, il y a un notebook avec deux onglets : le premier permet de 
-sélectionner le fichier (qu'on appelle "carte") obstacles et l'autre le fichier personnages que l'utilisateur 
-souhaite utiliser. Ce seront les données utilisées pour la simulation. Les cartes sont dans 
-le dossier data. Il y a deux fichiers "liste cartes personnages" et "liste cartes obstacles" dans lesquels 
-se trouve les noms des cartes enregistrées. Il y a deux boutons par onglet. Le premier permet de supprimer une 
-carte. L'autre d'ajouter une carte à la liste.
+## NOTE
+This project was originally developed as part of a coursework in France. Source code variables and GUI elements are in French, but this documentation has been translated for accessibility.
 
-En bas, une frame avec des infos diverses sur les cartes sélectionnées, l'option de changer la vitesse de 
-la simulation et deux boutons. Le premier permet de lancer la simulation directement (appelle simulation.py)
-avec les données sélectionnées, l'autre de lancer une autre fenêtre pour dessiner une carte à la souris.
+## OVERVIEW
+The goal of this project is to simulate autonomous agents (pedestrians) navigating from a starting point to a destination while avoiding static obstacles and dynamic user-placed barriers.
 
-En haut à gauche, un aperçu des cartes sélectionnées.
+Unlike global pathfinding algorithms (like Dijkstra or A*), agents in this simulation use a reactive local search approach: they observe their immediate neighborhood and make decisions based on heuristic distance to the target and memory of past positions to avoid loops.
 
-2 - fenetredessin.py
-permet de dessiner une carte à la souris.
--(maintenir) Clic gauche pour effacer
--(maintenir) Clic droit pour poser des obstacles
--appuyer sur le bouton à droite pour passer en mode 'poser des obstacles' : premier clic pose le départ, deuxième
-l'arrivée, le troisième annule tout, et appuyer sur espace confirme.
+## KEY FEATURES
 
-plusieurs options dans le menu en haut:
--Nouvelle carte : met une carte vide
--ouvrir : permet d'ouvrir pour modifier une carte existante
--enregistrer sous : enregistre la carte dessinée
--redimensionner 
--lancer la simulation (appelle simulation.py)
+1. Interactive Dashboard (main.py)
+   - Manage map files (obstacles and agents).
+   - Select agent configurations.
+   - Launch simulations with specific parameters.
 
-3 - simulation.py
-lance la simulation. plusieurs options :
--mettre en pause en appuyant sur le bouton ou la touche espace
--poser des murs en temps réel avec clic gauche
--effacer des murs en temps réel avec clic droit
--régler la vitesse en temps réel
+2. Built-in Map Editor (dessinercarte.py)
+   - Draw custom maps with the mouse.
+   - Place obstacles, start points, and end points intuitively.
+   - Save and load your creations.
 
-comment ça marche ?
-la simulation prend en entrée un set qui contient les positions des murs et une liste qui contient un tuple par perso
-(pos depart, pos arrivée, couleur). Pour chaque élément de ces structures, on crée un obstacle/perso.
-Les personnages sont des instances de la classe Personnage. Attributs de classe : un annuaire qui contient tous
-les persos crées, et un dico des positions occupées par les persos avec le nombre de persos par position.
-La simulation consiste en une boucle qui appelle la méthode "déplacer" pour chaque personnage.
-Pour se déplacer, ils regardent autour d'eux les cases libres de leur voisinage, puis ils choisissent pour leur
-prochain déplacement la case la plus proche de leur destination. Ils ont chacun une liste de leurs positions 
-précédentes qu'ils utilisent pour ne pas revenir sur leurs pas. Lorsqu'ils sont coincés (aucune options de 
-déplacements) ils vident leur liste de positions précédentes.
+3. Real-Time Simulation (simulation.py)
+   - Adjust simulation speed on the fly.
+   - Dynamic Interaction: Add or remove walls *during* the simulation to test agent adaptability.
+   - Pause/Resume control.
+
+## HOW IT WORKS (ALGORITHM)
+
+The simulation logic relies on a custom Agent class ('Personnage'). The movement logic follows these rules:
+
+1. Perception: At each step, the agent scans its immediate neighboring cells.
+2. Heuristic Decision: It calculates the distance from each free neighbor to the destination and selects the closest one.
+3. Memory (Tabu Search): To prevent agents from getting stuck in loops (moving back and forth), each agent maintains a list of recently visited positions.
+4. Stuck Recovery: If an agent is trapped (no valid moves), it clears its memory to allow backtracking and finding a new path.
+
+## CONTROLS
+
+### Map Editor
+- Draw Obstacles: Hold Right Click
+- Erase: Hold Left Click
+- Set Start/End: Click "Mode" button -> 1st click (Start), 2nd click (End)
+- Confirm Start/End: Spacebar
+
+### Simulation
+- Pause / Resume: Spacebar (or UI Button)
+- Place Wall (Live): Left Click
+- Remove Wall (Live): Right Click
+- Speed: Use the slider in the UI
+
+## PROJECT STRUCTURE
+
+- data/ : Stores map files (.txt or .json)
+- main.py : Application entry point (Menu & Dashboard)
+- dessinercarte.py : Map Editor (Drawing tool)
+- simulation.py : Core Simulation Logic
+
+## GETTING STARTED
+
+1. Clone the repository
+2. Run the application: python main.py
+3. Select a map from the list (or create a new one via the Editor)
+4. Click "Lancer Simulation"
