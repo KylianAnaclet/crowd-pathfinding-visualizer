@@ -65,6 +65,9 @@ The simulation logic relies on a custom Agent class ('Personnage'). The movement
 3. Select a map from the list (or create a new one via the Editor)
 4. Click "Lancer Simulation"
 
+This project uses Tkinter (included by default with Python).
+If you are on Linux, install it with: sudo apt install python3-tk
+
 
 ## Authors & Contributors
 
